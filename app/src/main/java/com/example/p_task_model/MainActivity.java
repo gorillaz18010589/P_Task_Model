@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean isCumulativeBetStatus;
     private boolean isCumulativeDepositStatus;
 
-
     RookieManager rookieManager;
 
     @Override
@@ -46,8 +45,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-         rookieManager = new RookieManager(MainActivity.this);
+        rookieManager = new RookieManager(MainActivity.this);
         EventBus.getDefault().register(this);
     }
 
@@ -55,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
     }
-
 
 
     @Override
@@ -68,12 +65,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, SecondActivity.class));
     }
 
-    @Subscribe(threadMode = ThreadMode.MainThread,sticky = true)
-    public void getRookieActivityEvent(RookieActivityEvent rookieActivityEvent){
+    @Subscribe(threadMode = ThreadMode.MainThread, sticky = true)
+    public void getRookieActivityEvent(RookieActivityEvent rookieActivityEvent) {
         rookieActivityData = rookieActivityEvent.getRookieActivityData();
         Gson gson = new Gson();
         String jsonData = gson.toJson(rookieActivityEvent.getRookieActivityData());
-        Log.v("hank","getRookieActivityEvent-> " + jsonData);
+        Log.v("hank", "getRookieActivityEvent-> " + jsonData);
 
         part1InfoBean = rookieActivityData.getPart1Info();
         part2InfoBean = rookieActivityData.getPart2Info();
@@ -85,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         isEmailStatus = part1InfoBean.isEmailStatus();
         isNotDuplicateIP = part1InfoBean.isNotDuplicateIP();
 
-        isWithdrawDepositStatus =  part2InfoBean.isDepositStatus();
+        isWithdrawDepositStatus = part2InfoBean.isDepositStatus();
         isWithdrawStatus = part2InfoBean.isWithdrawStatus();
 
         isBetStatus = part3InfoBean.isBetStatus();
@@ -95,63 +92,63 @@ public class MainActivity extends AppCompatActivity {
         isCumulativeDepositStatus = part4InfoBean.isCumulativeDepositStatus();
 
 
-        if(part1InfoBean.isBankAccountStatus()){
+        if (part1InfoBean.isBankAccountStatus()) {
 
-        }else {
-
-        }
-        if(part1InfoBean.isEmailStatus()){
-
-        }else {
+        } else {
 
         }
-        if(part1InfoBean.isCellPhoneStatus()){
+        if (part1InfoBean.isEmailStatus()) {
 
-        }else {
-
-        }
-        if(part1InfoBean.isNotDuplicateIP()){
-
-        }else {
+        } else {
 
         }
+        if (part1InfoBean.isCellPhoneStatus()) {
 
-
-        if(part2InfoBean.isWithdrawStatus()){
-
-        }else {
+        } else {
 
         }
-        if(part2InfoBean.isDepositStatus()){
+        if (part1InfoBean.isNotDuplicateIP()) {
 
-        }else {
+        } else {
 
         }
 
 
-        if(part3InfoBean.isDepositStatus()){
+        if (part2InfoBean.isWithdrawStatus()) {
 
-        }else {
-
-        }
-        if(part3InfoBean.isBetStatus()){
-
-        }else {
+        } else {
 
         }
+        if (part2InfoBean.isDepositStatus()) {
 
-        if(part4InfoBean.isCumulativeDepositStatus()){
-
-        }else {
-
-        }
-        if(part4InfoBean.isCumulativeBetStatus()){
-
-        }else {
+        } else {
 
         }
 
-        Log.v("hank","getRookieActivityEvent-> isBankCard" + part1InfoBean.isBankAccountStatus());
+
+        if (part3InfoBean.isDepositStatus()) {
+
+        } else {
+
+        }
+        if (part3InfoBean.isBetStatus()) {
+
+        } else {
+
+        }
+
+        if (part4InfoBean.isCumulativeDepositStatus()) {
+
+        } else {
+
+        }
+        if (part4InfoBean.isCumulativeBetStatus()) {
+
+        } else {
+
+        }
+
+        Log.v("hank", "getRookieActivityEvent-> isBankCard" + part1InfoBean.isBankAccountStatus());
 
     }
 
